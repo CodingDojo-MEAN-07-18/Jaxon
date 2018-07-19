@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Trivia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' />
+    <script   src="https://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $.get('https://opentdb.com/api.php?amount=10',displayGame)
+            function displayGame(data){
+                console.log(data.results)
+                for (let i = 0; i < 10;i++) {
+                    if (data.results[i].type =='multiple'){
+                        $('#master').append('<li><form id ='+i+'> <p>' + data.results[i].question + '</p> <select><option>'+data.results[i].incorrect_answers[0]+'</option> <option>'+ data.results[i].incorrect_answers[1] + '</option> <option>'+ data.results[i].incorrect_answers[2] + '</option> <option>'+ data.results[i].correct_answer + '</option></select></form><button id ='+i+'>Submit</button></li>');
+                    }
+                    else {
+                        $('#master').append('<li><form id ='+i+'> <p>' + data.results[i].question + '</p> <select><option>True</option><option>False</option></select></form><button id ='+i+'>Submit</button>');
+                    }
+
+                }
+            }
+            $('button').click(function(){
+                var formId = $(this).attr('id')
+                console.log(formId)
+                $(this).append(data.results[formId].correct_answer)
+            })
+        })
+    </script>
+</head>
+<body>
+    <ul id = "master">
+
+    </ul>
+
+</body>
+</html>

@@ -1,0 +1,198 @@
+Challenge 1
+Given:
+    console.log(hello);                                   
+    var hello = 'world'; 
+Read As:
+    var hello
+    console.log(hello);
+    hello = 'world'; hello is assigned the value 'world'
+Predicition:
+    undefined
+Output:
+    undefined
+
+Challenge 2
+Given:
+    var needle = 'haystack';
+    test();
+    function test(){
+	    var needle = 'magnet';
+	    console.log(needle);
+    }
+Result:
+    var needle;
+    needle = haystack;
+    var needle;
+    needle = 'magnet';
+    console.log('needle');
+Predicition:
+    magnet
+Output:
+    magnet
+
+Challenge 3
+Given:
+    var brendan = 'super cool';
+    function print(){
+	    brendan = 'only okay';
+	    console.log(brendan);
+        }   
+    console.log(brendan);
+Read As:
+    var brendan;
+    brendan = 'super cool'
+    function is defined but not called
+    console.log(brendan)
+Predicition:
+    super cool
+Output:
+    super cool
+
+Challenge 4
+Given:
+    var food = 'chicken';
+    console.log(food);
+    eat();
+    function eat(){
+	    food = 'half-chicken';
+	    console.log(food);
+	    var food = 'gone';
+    }
+Read As:
+    var food;
+    food = 'chicken';
+    console.log(food);
+    var food;
+    food = gone;
+    food = 'half-chicken;;
+    console.log(food);
+Predicition:
+    chicken
+    half-chicken
+Output:
+    chicken
+    half-chicken
+
+Challenge 5
+Given:
+    mean();
+    console.log(food);
+    var mean = function() {
+        food = "chicken";
+        console.log(food);
+        var food = "fish";
+        console.log(food);
+    }
+    console.log(food);
+Read As:
+    var mean;
+    mean();
+    console.log(food);
+    console.log(food);
+Predicition:
+    Error
+Output:
+    Error mean is not a function
+
+Challenge 6
+Given:
+    console.log(genre);
+    var genre = "disco";
+    rewind();
+    function rewind() {
+        genre = "rock";
+        console.log(genre);
+        var genre = "r&b";
+        console.log(genre);
+    }
+    console.log(genre);
+Read As:
+    var genre;
+    console.log(genre);
+    genre = 'disco';
+    var genre;
+    genre = 'rock';
+    console.log(genre);
+    genre = 'r&b';
+    console.log(genre);
+    console.log(genre);
+Predicition:
+    undefined
+    rock
+    r&b
+Output:
+    undefined
+    rock
+    r&b
+    disco
+
+Challenge 7
+Given:
+    dojo = "san jose";
+    console.log(dojo);
+    learn();
+    function learn() {
+        dojo = "seattle";
+        console.log(dojo);
+        var dojo = "burbank";
+        console.log(dojo);
+    }
+    console.log(dojo);
+Read As:
+    var dojo;
+    dojo = 'san jose';
+    console.log(dojo);
+    learn();
+        dojo = 'seattle';
+        console.log(dojo);
+        dojo = burbank;
+        console.log(dojo)
+    console.log(dojo)
+Predicition:
+    san jose
+    seattle
+    burbank
+    burbank
+Output:
+    san jose
+    seattle
+    burbank
+    san jose
+
+Challenge 8
+Given:
+    console.log(makeDojo("Chicago", 65));
+    console.log(makeDojo("Berkeley", 0));
+    function makeDojo(name, students){
+        const dojo = {};
+        dojo.name = name;
+        dojo.students = students;
+        if(dojo.students > 50){
+            dojo.hiring = true;
+        }
+        else if(dojo.students <= 0){
+            dojo = "closed for now";
+        }
+        return dojo;
+    }
+Read As:
+    makeDojo("Chicago",65);
+        const dojo = {};
+        dojo.name = "Chicago";
+        dojo.students = 65;
+        dojo.hiring = True;
+        return dojo
+    console.log(dojo)
+    makeDojo("Berkeley",0)
+        const dojo = []
+        dojo.name = 'Berkeley'
+        dojo.students = 0
+        dojo = 'closed for now'
+        return dojo
+    console.log(dojo)
+Predicition:
+    { name: 'Chicago', students: 65, hiring: true }
+    "closed for now"
+Output:
+    { name: 'Chicago', students: 65, hiring: true }
+    Error Assignment to constant variable not allowed (i.e. dojo = 'closed for now' )
