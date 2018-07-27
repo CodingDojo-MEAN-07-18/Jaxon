@@ -1,0 +1,23 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+img{
+    width: 500px;
+    margin:10px;
+    border:1px solid black;
+    vertical-align: top;
+}
+.head{
+    margin:5px;
+    display: block;
+}
+form{
+    margin:10px;
+}
+form h3{
+    margin:5px;
+}
+a{
+    margin:3px;
+}
