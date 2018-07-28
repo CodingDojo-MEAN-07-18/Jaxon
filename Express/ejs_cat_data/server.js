@@ -19,7 +19,6 @@ app.get('/cats',function(request,response){
 app.get('/form',function(request,response){
   response.render('form.ejs');
 })
-app.listen(8000);
 app.get('/cats/1',function(request,response){
   var data = {'name': 'CuddleBute', 'favorite_food': "Pizza", 'age': 3, "sleeping_spots":['couch','faces','on the keyboard'], 'img_url': "/images/cat_1.jpg" }
   response.render("details.ejs",{'data':data})
@@ -32,4 +31,6 @@ app.get('/cats/3',function(request,response){
   var data = {'name': 'AntiFluff', 'favorite_food': "cat litter", 'age': 'unknown',"sleeping_spots":['upside down','in a jar','in the sink'], 'img_url': "/images/cat_3.jpeg" }
   response.render("details.ejs",{'data':data})
 })
+
+app.listen(8000);
 
