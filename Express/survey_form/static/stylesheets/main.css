@@ -1,0 +1,15 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+}
+fieldset{
+    width:300px;
+    margin:10px 10px 10px 200px;
+}
+form{
+    margin:20px;
+}
+table{
+    margin:10px 10px 10px 200px;
+}
