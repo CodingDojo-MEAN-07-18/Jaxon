@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/main.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script>
+        $(document).ready(function(){
+            var socket = io.connect();
+            socket.on('greeting', function (data) {
+                console.log(data.msg);
+            });
+            $('#form').submit(function(e){
+                e.preventDefault();
+                socket.emit('posting_form',{
+                    name: $('#name').val(),
+                    location: $('#location').val(),
+                    favorite_language: $('#language').val(),
+                    comment: $('#comment').val(),
+                });
+                console.log("Submitted")
+            });
+            socket.on('updated_message',(data) => {
+                $('#message').html('You emitted the following information to the server: ' + JSON.stringify(data.response));
+            });
+            socket.on('random_number',(data) => {
+                $('#random_number').html('Your lucky number is '+ JSON.stringify(data.response));
+            });
+        })
+    </script>
+</head>
+<body>
+    <div id="message"></div>
+    <div id="random_number"></div>
+    <fieldset>
+            <form action="" id = 'form'>
+                Name: <input type="text" id='name'><br><br>
+    
+                Dojo Location: <select id='location'><option  value="Seattle">Seattle</option><option value="Dallas">Dallas</option><option value="New York">New York</option><option value="Online">Online</option></select><br><br>
+    
+                Favorite Language: <select id='language'><option value="Javascript">Javascript</option><option value="Python">Python</option></select><br><br>
+    
+                Comment: <textarea id="comment"></textarea><br><br>
+                <input type="submit">
+            </form>
+        </fieldset>
+</body>
+</html>
