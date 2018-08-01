@@ -1,0 +1,13 @@
+1) Have the NodeJS server render veiws/index.ejs that has html content for the client whenever the client requests '/'
+
+2) In the client codes, have a javascript code that asks the user for their name and store this user input in a variable called name
+
+3) Have the client EMIT "got_a_new_user" and pass "name" to the server.
+
+4) Have the server LISTEN for the event called "got_a_new_user" and when triggered, have the server broadcast an EVENT "new_user" to the clients with the name of the new user attached to the event
+
+5) Have the client LISTEN for the event "new_user" and when triggered have the client render this info in jQuery somewhere in the html
+
+6) Have the server listen for an event called disconnect, when triggered BROADCAST to all the clients an event 'disconnect_user' with some data (session user id)
+
+7) Have the client listen for an event disconnect_user when triggered have the jQuery box removed 
