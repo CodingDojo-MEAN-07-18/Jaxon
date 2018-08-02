@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Duck Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <nav>
+      <a href='/'>Dashboard</a>
+      <a href="/ducks/new">Create New duck</a>
+      <a href="/ducks/edit/<%=duck._id%>">Edit Profile</a>
+      <a href="/ducks/destroy/<%=duck._id%>">Delete Duck</a>
+    </nav>
+    <h1><%=duck.name%>'s Profile</h1>
+    <h3>Age: <%=duck.age %></h3>
+    <% if (duck.leader == true){ %>
+        <h3>A Leader of The Pack!</h3>
+    <% } %>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ducks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/main.css" />
+</head>
+<body>
+    <% if(messages.registration) { %>
+        <% for (var x of messages.registration) { %>
+             <h3><%= x %></h3>
+        <% } %>
+    <% } %>
+    <nav><a href="/ducks/new">Create New duck</a></nav>
+    <h1>This is a pack of ducks click on the images to learn more about each one</h1>
+    <% if (ducks.length > 0){%>
+      <% for(duck of ducks){ %>
+        <a href = "/ducks/<%=duck._id%>"><img style="height:40px;width:40px;" src="/images/duck.jpg" alt="duck"></a>
+      <%}%>
+    <%}%>
+</body>
+</html>
