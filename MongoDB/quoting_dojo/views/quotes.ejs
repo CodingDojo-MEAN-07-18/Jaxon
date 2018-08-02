@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Quotes</title>
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <fieldset>
+        <legend>Here Are Awesome Quotes</legend>
+        <ul>
+            <% for(quote of quotes){ %>
+            <li>"<%=quote.quote%>" - <%=quote.name%> on <%=quote.date %> at <%=quote.hours%>:<%=quote.minutes%></li>
+            <%}%>
+        </ul>
+    </fieldset>
+</body>
+</html>
