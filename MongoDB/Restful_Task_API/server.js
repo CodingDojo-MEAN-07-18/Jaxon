@@ -3,6 +3,9 @@ app = express();
 var bodyParser = require('body-parser');
 // Integrate body-parser with our App
 app.use(bodyParser.json());
+var path = require('path');
+// Setting our Static Folder Directory
+app.use(express.static( __dirname + '/public/dist/public' ));
 var mongoose = require('mongoose');
 const { Schema } = mongoose;
 // This is how we connect to the mongodb database using mongoose -- "basic_mongoose" is the name of
@@ -25,7 +28,7 @@ var TaskSchema = new Schema({
 mongoose.model('Task',TaskSchema);
 var Task = mongoose.model('Task');
 app.get('/',function(request,response){
-    response.http('Hello World')
+    response.render('index.html')
 })
 app.get('/tasks',function(request,response){
     Task.find({})
