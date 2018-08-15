@@ -8,12 +8,16 @@ import { HttpService } from './http.service';
 })
 export class AppComponent implements OnInit {
   title = 'MEAN';
-  tasks;
-  description;
+  tasks: any;
+  task: any;
+  edit: any;
+  newTask: any;
+  errors: any;
   constructor(private _httpService: HttpService) { }
    // ngOnInit will run when the component is initialized, after the constructor method.
   ngOnInit() {
     // this.getTasksFromService();
+    this.newTask = { title: '', description: '' };
   }
   getTasksFromService() {
     const observable = this._httpService.getTasks();
@@ -22,11 +26,40 @@ export class AppComponent implements OnInit {
       this.tasks = data;
     });
   }
-  getDescription(task_id) {
+  getTask(task_id) {
     const observable = this._httpService.getTaskbyID(task_id);
     observable.subscribe(data => {
       console.log('Got our task', data);
-      this.description = data;
+      this.task = data;
     });
+  }
+  getTaskEdit(task_id) {
+    const observable = this._httpService.getTaskbyID(task_id);
+    observable.subscribe(data => {
+      console.log('Got our task', data);
+      this.edit = data;
+    });
+  }
+  onSubmit() {
+    const observable = this._httpService.addTask(this.newTask);
+    observable.subscribe(data => {
+      console.log('Successfully submitted form', data);
+    });
+    this.newTask = { title: '', description: '' };
+    this.getTasksFromService();
+  }
+  editTask(task_id) {
+    const observable = this._httpService.editTask(this.edit);
+    observable.subscribe(data => {
+      console.log('Successfully edited task', data);
+    });
+    this.edit = null;
+  }
+  deleteTask(task_id) {
+    const observable = this._httpService.deleteTaskByID(task_id);
+    observable.subscribe(data => {
+      console.log('Deleted Task', data);
+    });
+    this.getTasksFromService();
   }
 }

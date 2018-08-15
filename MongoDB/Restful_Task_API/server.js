@@ -48,12 +48,12 @@ app.post('/tasks',function(request,response){
         .then((task)=>{
             console.log("Success!");
             console.log(task);
-            response.redirect('/tasks')
+            response.json(task);
         })
         .catch((error)=>{
             console.log("Failed to Create new Task")
             console.log(error);
-            response.redirect('/tasks')
+            response.json(error);
         })
 })
 
@@ -65,15 +65,15 @@ app.put('/tasks/:id',function(request,response){
             task.description = request.body.description;
             task.completed = request.body.completed;
             task.save()
-                .then((task)=>response.redirect("/tasks/"+request.params.id))
+                .then((task)=>response.json(task))
                 .catch((error)=>{
                     console.log(error);
-                    response.redirect("/tasks/"+request.params.id)
+                    response.json(error);
                 })
         })
         .catch((error)=>{
             console.log(error);
-            response.redirect("/tasks/"+request.params.id)
+            response.json(error);
         })
 
 })
@@ -83,11 +83,11 @@ app.delete('/tasks/:id',function(request,response){
         .then((task)=>{
             console.log("Success in Deletion")
             task.remove()
-            response.redirect('/tasks')
+            response.json(task)
         })
         .catch((error)=>{
             console.log(error);
-            response.redirect('/tasks')
+            response.json(error)
         })
 })
 
