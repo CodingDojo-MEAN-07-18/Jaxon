@@ -1,0 +1,26 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+fieldset{
+  width: 300px;
+  padding: 5px;
+  margin: 10px;
+}
+button{
+  background-color: #0fe267;
+}
+.tasks{
+  border-radius: 6px;
+  padding:3px;
+}
+.show{
+  border-radius: 100%;
+  padding: 6px;
+}
+h4{
+  text-align: center;
+}
+p{
+  margin:2px;
+}

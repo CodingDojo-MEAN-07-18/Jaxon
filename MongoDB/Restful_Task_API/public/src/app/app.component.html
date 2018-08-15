@@ -1,5 +1,17 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <h2>Restful Tasks API</h2>
-<ul *ngFor='let task of tasks'>
-  <li>{{task.title}} - {{task.description}}</li>
-</ul>
+<button class="tasks" (click)='getTasksFromService()'>Get All Tasks</button>
+<fieldset *ngIf='tasks'>
+  <table>
+    <tr *ngFor='let task of tasks'>
+      <td>{{task.title}}</td>
+      <td>
+        <button class="show" (click)='getDescription(task._id)' [id]='task._id'>Show</button>
+      </td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset *ngIf="description">
+  <h4>{{description.title}}</h4>
+  <p>{{description.description}}</p>
+</fieldset>
