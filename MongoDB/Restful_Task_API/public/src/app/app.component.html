@@ -1,56 +1,53 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<h2>Restful Tasks API</h2>
-<button class="tasks" (click)='getTasksFromService()'>Get All Tasks</button>
-<fieldset *ngIf='tasks'>
-  <table>
-    <tr *ngFor='let task of tasks'>
-      <td>{{task.title}}</td>
-      <td>
-        <button class="show" (click)='getTask(task._id)'>Show</button>
-      </td>
-      <td>
-        <button class="edit" (click)='getTaskEdit(task._id)'>Edit</button>
-      </td>
-      <td>
-        <button class="delete" (click)='deleteTask(task._id)'>Delete</button>
-      </td>
-    </tr>
-  </table>
-</fieldset>
-<fieldset *ngIf="task">
-  <h4>{{task.title}}</h4>
-  <p>{{task.description}}</p>
-  <br>
-  <p>Completed: {{task.completed}}</p>
-</fieldset>
-<fieldset *ngIf="edit" style="display: inline;">
-  <form (submit)="editTask(edit._id)">
-    <!-- use the json pipe to see how newTask changes in real time -->
-    <label>Title:</label>
-    <input type="text" name="edit.title" [(ngModel)]="edit.title" />
-    <br>
-    <label>Description:</label>
-    <br>
-    <textarea name="edit.description" [(ngModel)]="edit.description" cols="30" rows="10" style="resize: none"></textarea>
-    <br>
-    <label>Completed:</label>
-    <select name="edit.completed" [(ngModel)]="edit.completed">
-      <option value="false">False</option>
-      <option value='true'>True</option>
-    </select>
-    <br>
-    <input type="submit" value="Edit Task" />
-  </form>
-</fieldset>
-<fieldset>
-  <form (submit)="onSubmit()">
-    <label>Title:</label>
-    <input type="text" name="newTask.title" [(ngModel)]="newTask.title" />
-    <br>
-    <label>Description:</label>
-    <br>
-    <textarea name="newTask.description" [(ngModel)]="newTask.description" style="resize:none" cols="30" rows="10"></textarea>
-    <br>
-    <input type="submit" value="Create Task" />
-  </form>
-</fieldset>
+<div class="wrapper">
+  <h2>Restful Tasks API</h2>
+  <fieldset class='form'>
+    <form (submit)="onSubmit()">
+      <label>Title:</label>
+      <input type="text" name="newTask.title" [(ngModel)]="newTask.title" />
+      <br>
+      <label>Description:</label>
+      <br>
+      <textarea name="newTask.description" [(ngModel)]="newTask.description" style="resize:none" cols="30" rows="10"></textarea>
+      <br>
+      <input type="submit" value="Create Task" />
+    </form>
+  </fieldset>
+  <button class="tasks" (click)='getTasksFromService()'>Get All Tasks</button>
+  <fieldset class="allTasks" *ngIf='tasks'>
+    <table>
+      <tr *ngFor='let task of tasks'>
+        <td>{{task.title}}</td>
+        <td>
+          <button class="show" (click)='getTask(task._id)'>Show</button>
+        </td>
+        <td>
+          <button class="edit" (click)='getTaskEdit(task._id)'>Edit</button>
+        </td>
+        <td>
+          <button class="delete" (click)='deleteTask(task._id)'>Delete</button>
+        </td>
+      </tr>
+    </table>
+  </fieldset>
+  <fieldset *ngIf="edit" style="display: inline;">
+    <form (submit)="editTask(edit._id)">
+      <!-- use the json pipe to see how newTask changes in real time -->
+      <label>Title:</label>
+      <input type="text" name="edit.title" [(ngModel)]="edit.title" />
+      <br>
+      <label>Description:</label>
+      <br>
+      <textarea name="edit.description" [(ngModel)]="edit.description" cols="30" rows="10" style="resize: none"></textarea>
+      <br>
+      <label>Completed:</label>
+      <select name="edit.completed" [(ngModel)]="edit.completed">
+        <option value="false">False</option>
+        <option value='true'>True</option>
+      </select>
+      <br>
+      <input type="submit" value="Edit Task" />
+    </form>
+  </fieldset>
+  <app-task *ngIf="task" [taskToShow]="task"></app-task>
+</div>
