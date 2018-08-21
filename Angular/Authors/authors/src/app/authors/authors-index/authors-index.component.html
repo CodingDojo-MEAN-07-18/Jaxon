@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <div class="nav">
+    <button><a href="/new">Add an Author</a></button>
+  </div>
+  <div class="authors">
+    <table>
+      <thead>
+        <th>Author</th>
+        <th>Actions Available</th>
+      </thead>
+      <tbody *ngIf='authors'>
+        <tr *ngFor='let author of authors'>
+          <td>{{author.first_name}} {{author.last_name}}</td>
+          <td>
+            <button (click)='onEdit(author._id)'>Edit</button>
+            <!-- <button (click)='onView(author._id)'>View</button> -->
+            <button (click)='onDelete(author._id)'>Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
