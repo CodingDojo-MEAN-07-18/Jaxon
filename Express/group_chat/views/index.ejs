@@ -15,22 +15,27 @@
                 var name = prompt('What is your name?');
                 socket.emit('got_new_user',{name: name})
             })
+            socket.on('all_posts',function(data){
+                for (let i = 0; i <= data.previous_posts.length;i++){
+                    $('#chat').append(data.previous_posts[i].user + ": " +data.previous_posts[i].post);
+                }
+            })
             socket.on('other_users',function(data){
                 console.log(data.users)
                 for (let i = 0; i < data.users.length; i++ ){
                     console.log(i)
                     console.log(data.users[i].user)
-                    $('#other_users').html(data.users[i].user + ' ' + data.users[i].id)
+                    $('#other_users').append(data.users[i].user + ' ' + data.users[i].id)
                 }
             })
             socket.on('new_user',function(data){
                 console.log(data)
-                $('#users').html(data.data.user +' '+ data.data.id)
+                $('#users').append(data.data.user +' '+ data.data.id)
             })
             $('#submit').click(function(){
-                socket.emit('new_post');
+                socket.emit('new_post',{post: $('#post').val()});
                 socket.on('recieved_new_post',function(data){
-                    $('#chat').append(data.user.user + ' ' + $('#post').val() + '<br>');
+                    $('#chat').append(data.new_post.user + ' ' + data.new_post.post + '<br>');
                     $('#post').text('');
                 })
             })

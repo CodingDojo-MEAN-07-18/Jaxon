@@ -14,6 +14,7 @@ app.set('view engine', 'ejs');
 const server = app.listen(8000); 
 var io = require('socket.io')(server);
 var users = [];
+var posts = [];
 
 io.sockets.on('connection',function(socket){
     socket.emit('connected',{msg: 'You are connected to a socket.'})
@@ -25,6 +26,7 @@ io.sockets.on('connection',function(socket){
         users.push(session);
         console.log(users)
         io.emit('new_user',{data: session})
+        io.emit('all_posts',{previous_posts:posts})
     })
     socket.on('disconnect',function(data){
         for(let i = 0; i < users.length; i++){
@@ -35,8 +37,10 @@ io.sockets.on('connection',function(socket){
             }
         }
     })
-    socket.on('new_post',function(){
-        socket.emit('recieved_new_post',{user: session});
+    socket.on('new_post',function(data){
+        let new_post = {user:session, post:data};
+        posts.push(new_post);
+        socket.emit('recieved_new_post',{post:new_post});
     })
 })
 

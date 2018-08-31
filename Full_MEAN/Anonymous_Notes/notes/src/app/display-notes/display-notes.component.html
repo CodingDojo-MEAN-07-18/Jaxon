@@ -1,0 +1,9 @@
+<app-add-note (addNote)='createNote($event)'></app-add-note>
+<fieldset>
+  <ul *ngFor="let note of notes">
+    <li>
+      <p>{{note.content}}</p>
+      <p>{{note.createdAt}}</p>
+    </li>
+  </ul>
+</fieldset>

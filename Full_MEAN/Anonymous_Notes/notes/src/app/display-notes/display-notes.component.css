@@ -1,0 +1,11 @@
+ul{
+  list-style-type: none;
+}
+fieldset{
+  width: 600px;
+  margin:20px 20px 20px 320px;
+}
+p{
+  display: inline;
+  margin: 5px;
+}

@@ -1,0 +1,28 @@
+wrapper{
+  width:960px;
+}
+h2{
+  display: inline;
+  margin: 5px;
+}
+header{
+  margin: 3px;
+}
+fieldset{
+  margin:3px;
+}
+form{
+  width:900px;
+  text-align: right;
+  padding:5px;
+}
+input{
+  width: 800px;
+  margin:3px;
+}
+button{
+  padding:4px;
+}
+label{
+
+}

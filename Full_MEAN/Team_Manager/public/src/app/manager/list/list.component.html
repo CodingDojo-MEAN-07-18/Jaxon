@@ -1,0 +1,23 @@
+<fieldset>
+  <header>
+    <h2><a href="/players/list">List</a></h2>
+    <h2> | </h2>
+    <h2><a href="/players/addplayer">Add Player</a></h2>
+  </header>
+
+  <table *ngIf="players">
+    <thead>
+      <th>Player Name</th>
+      <th>Preferred Position</th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+      <tr *ngFor='let player of players'>
+        <td> {{player.name}} </td>
+        <td> {{player.position}} </td>
+        <td><button (click)='onDelete(player._id)'> Delete </button></td>
+      </tr>
+    </tbody>
+  </table>
+
+</fieldset>

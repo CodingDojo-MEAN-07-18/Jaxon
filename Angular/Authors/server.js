@@ -63,14 +63,14 @@ app.put('/api/:id/edit', function (request, response) {
         .catch((error) => {
             response.json(error)
         })
-        
+
 })
 app.post('/api/authors', function (request, response) {
     Author.create({ 'first_name': request.body.first_name, 'last_name': request.body.last_name })
-        .then((data) => { response.json('data') })
+        .then((data) => { response.json(data) })
         .catch((error) => { response.json(error) })
 })
-app.delete('/api/:id/delete', function (request, response) { 
+app.delete('/api/:id/delete', function (request, response) {
     Author.remove({ _id: request.params.id })
         .then((data) => response.json(data))
         .catch((error) => { response.json(error) })

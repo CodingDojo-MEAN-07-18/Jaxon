@@ -38,3 +38,4 @@ export class BookListComponent implements OnInit {
     console.log('Eventing');
     event.stopPropagation();
   }
+}

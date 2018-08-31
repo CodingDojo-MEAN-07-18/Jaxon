@@ -1,0 +1,9 @@
+<section>
+  <fieldset>
+    <form (submit)='onSubmit($event,form)' #form='ngForm'>
+      <label>Add Note: </label>
+      <input type="text" [(ngModel)]='note.content' name="content">
+      <button *ngIf='form.valid'>Create Note</button>
+    </form>
+  </fieldset>
+</section>

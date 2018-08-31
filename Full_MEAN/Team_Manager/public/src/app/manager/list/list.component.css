@@ -1,0 +1,15 @@
+wrapper{
+  width:960px;
+}
+h2{
+  display: inline;
+  margin: 5px;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td, th {
+  padding:3px;
+  border: 1px solid black;
+}
