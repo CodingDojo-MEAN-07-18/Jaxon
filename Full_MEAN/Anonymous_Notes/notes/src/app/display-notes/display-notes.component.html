@@ -3,7 +3,7 @@
   <ul *ngFor="let note of notes">
     <li>
       <p>{{note.content}}</p>
-      <p>{{note.createdAt}}</p>
+      <p>{{note.createdAt | date :longDate}}</p>
     </li>
   </ul>
 </fieldset>
