@@ -3,6 +3,22 @@
 <h2><a href="status/game/2">Game 2</a></h2>
 <h2>|</h2>
 <h2><a href="status/game/3">Game 3</a></h2>
-<p>
-  game works!
-</p>
+<fieldset>
+  <h3>Game {{num}}</h3>
+  <table *ngIf="players">
+    <thead>
+      <th>Player</th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let player of players">
+        <td>{{player.name}}</td>
+        <td>
+          <button (click)='onEdit(player,"playing")' [ngClass]="{'green':>Playing</button>
+          <button (click)='onEdit(player,"not playing")' class='red'>Not Playing</button>
+          <button (click)='onEdit(player,"undecided")' class='yellow'>Undecided</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</fieldset>

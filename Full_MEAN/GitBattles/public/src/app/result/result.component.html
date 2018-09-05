@@ -1,0 +1,21 @@
+<fieldset>
+  <section *ngIf="result != null">
+    <div class="result">
+      <h3 class='green'>Score: {{result[0].score}} points!</h3>
+      <h4 class='green'>{{result[0].username}}</h4>
+      <h3 class='red'>Score: {{result[1].score}} points!</h3>
+      <h4 class='red'>{{result[1].username}}</h4>
+    </div>
+    <div class="winner">
+      <fieldset>
+        <h1>Winner</h1>
+        <img src="{{result[0].avatar_url}}" alt="">
+        <h3>{{result[0].username}}</h3>
+      </fieldset>
+    </div>
+  </section>
+  <section *ngIf="result == null">
+    <h3>Please select players to battle</h3>
+  </section>
+  <a href='/'><button>Reset</button></a>
+</fieldset>

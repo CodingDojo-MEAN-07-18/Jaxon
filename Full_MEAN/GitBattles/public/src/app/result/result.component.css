@@ -1,0 +1,19 @@
+.green{
+  color:green;
+}
+.red{
+  color:red;
+}
+.winner{
+  width:400px;
+  display: inline-block;
+  text-align: center;
+}
+.result{
+  width:400px;
+  display: inline-block;
+  text-align: top;
+}
+img{
+  height: 150px;
+}

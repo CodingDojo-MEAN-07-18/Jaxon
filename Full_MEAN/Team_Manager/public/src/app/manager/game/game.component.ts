@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlayerService } from '../../services/player-service.service';
+import { Player } from '../models/player';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 @Component({
   selector: 'app-game',
@@ -7,17 +8,28 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
-  player;
-  id: number;
+  players: Player[] = [];
+  playing: String;
+  num: number;
   constructor(private readonly _player: PlayerService, private _route: ActivatedRoute,
     private _router: Router) { }
 
   ngOnInit() {
     this._route.params.subscribe((params: Params) => {
-      this.id = params['id'];
+      this.num = params['num'];
     });
+    this.getPlayers();
   }
-  onEdit($event, player) {
-
+  getPlayers() {
+    this._player.getPlayers()
+      .subscribe(players => {
+        this.players = players;
+        console.log(players);
+      });
+  }
+  onEdit(player, styleOption) {
+    this._player.editGame(player, this.num, styleOption)
+      .subscribe(playerer => {
+      });
   }
 }

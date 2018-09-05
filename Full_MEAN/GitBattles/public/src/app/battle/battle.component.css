@@ -1,0 +1,17 @@
+fieldset{
+  display: inline-block;
+  width: 400px;
+  text-align: center;
+  margin:10px;
+}
+button{
+  display: block;
+}
+.user{
+  width:200px;
+  margin-left:100px;
+}
+.battle{
+  margin: 20px;
+  width: 850px;
+}
